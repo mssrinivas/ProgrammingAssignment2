@@ -1,4 +1,4 @@
-## Put comments here that give an overall description of what your
+
 ## Calculating inverse of a Matrix (Memoization Technique)
 
 ## This function creates a "matrix" object
@@ -24,14 +24,14 @@ makeCacheMatrix <- function(mat = matrix()) {
 ##then "CacheSolve should retrieve the inverse from the cache.
 cacheSolve <- function(mat, ...) {
         ## Return a matrix that is the inverse of 'mat'
-        inverse = mat$getinverse()
+        inverse <- mat$getinverse()
         if(!is.null(inverse)) {
                message("getting cached data...")
                return(inverse)
         }
         
-        data = mat$get()
-        inverse = solve(data,...)
+        data <- mat$get()
+        inverse <-solve(data,...)
         mat$setinverse(inverse)
         return(inverse)
 }
