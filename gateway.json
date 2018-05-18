@@ -1,0 +1,4183 @@
+{
+    "swagger":"2.0",
+    "info":{
+        "version":"2018.03.30",
+        "title":"REST API for Oracle Primavera Gateway",
+        "description":"Primavera Gateway Public API",
+        "x-summary":"Primavera Gateway Public API"
+    },
+    "basePath":"/gatewayapi/restapi",
+    "tags":[
+        {
+            "name":"App Instance Configurations"
+        },
+        {
+            "name":"App Instances"
+        },
+        {
+            "name":"Customization"
+        },
+        {
+            "name":"Event Services"
+        },
+        {
+            "name":"External Steps"
+        },
+        {
+            "name":"Flow Definition Apps"
+        },
+        {
+            "name":"Flow Field Map Templates"
+        },
+        {
+            "name":"Flow Instances"
+        },
+        {
+            "name":"Flow Load Objects"
+        },
+        {
+            "name":"Flow Parameters"
+        },
+        {
+            "name":"Flow Step Instance Messages"
+        },
+        {
+            "name":"Flow Step Instances"
+        },
+        {
+            "name":"Flows"
+        },
+        {
+            "name":"Object Log"
+        },
+        {
+            "name":"Parameter Values"
+        },
+        {
+            "name":"Provider"
+        },
+        {
+            "name":"Services"
+        },
+        {
+            "name":"Settings"
+        },
+        {
+            "name":"Synchronizations"
+        }
+    ],
+    "schemes":[
+        "http"
+    ],
+    "paths":{
+        "/v1/appInstanceConfigurations/list":{
+            "get":{
+                "tags":[
+                    "App Instance Configurations"
+                ],
+                "summary":"Returns all appInstanceConfig business objects.",
+                "description":"",
+                "operationId":"getParameters",
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"appInstId",
+                        "in":"query",
+                        "description":"ID of application instance.",
+                        "required":true,
+                        "type":"integer",
+                        "default":0,
+                        "format":"int64"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "$ref":"#/definitions/AppInstanceConfig"
+                        }
+                    },
+                    "404":{
+                        "description":"The AppInstanceConfig does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-appInstanceConfigurations-list-get"
+            }
+        },
+        "/v1/appInstanceConfigurations/{id}":{
+            "get":{
+                "tags":[
+                    "App Instance Configurations"
+                ],
+                "summary":"Returns the appInstanceConfig business object for the specified appInstanceConfig ID.",
+                "description":"",
+                "operationId":"getAppInstanceConfig",
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"id",
+                        "in":"path",
+                        "description":"ID of application configuration instance.",
+                        "required":true,
+                        "type":"integer",
+                        "default":0,
+                        "format":"int64"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "$ref":"#/definitions/AppInstanceConfig"
+                        }
+                    },
+                    "404":{
+                        "description":"The AppInstanceConfig does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-appInstanceConfigurations-{id}-get"
+            }
+        },
+        "/v1/appInstances":{
+            "post":{
+                "tags":[
+                    "App Instances"
+                ],
+                "summary":"Creates an AppInstance business object.",
+                "description":"",
+                "operationId":"createObject",
+                "consumes":[
+                    "application/json"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "in":"body",
+                        "name":"body",
+                        "description":"The application instance object to be created.",
+                        "required":true,
+                        "schema":{
+                            "$ref":"#/definitions/AppInstance"
+                        }
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "type":"boolean"
+                        }
+                    },
+                    "404":{
+                        "description":"The AppInstance does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-appInstances-post"
+            }
+        },
+        "/v1/appInstances/delete/{id}":{
+            "delete":{
+                "tags":[
+                    "App Instances"
+                ],
+                "summary":"Deletes an AppInstance business object identified by its ID.",
+                "description":"",
+                "operationId":"deleteAppInstance",
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"id",
+                        "in":"path",
+                        "description":"ID of application instance.",
+                        "required":true,
+                        "type":"integer",
+                        "default":0,
+                        "format":"int64"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "type":"boolean"
+                        }
+                    },
+                    "404":{
+                        "description":"The AppInstance does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-appInstances-delete-{id}-delete"
+            }
+        },
+        "/v1/appInstances/deployments":{
+            "get":{
+                "tags":[
+                    "App Instances"
+                ],
+                "summary":"Returns all deployment business objects.",
+                "description":"",
+                "operationId":"getDeployments",
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "$ref":"#/definitions/AppInstance"
+                        }
+                    },
+                    "404":{
+                        "description":"The AppInstance does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-appInstances-deployments-get"
+            }
+        },
+        "/v1/appInstances/list":{
+            "get":{
+                "tags":[
+                    "App Instances"
+                ],
+                "summary":"Returns all AppInstance business objects.",
+                "description":"",
+                "operationId":"getAppInstances",
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"appId",
+                        "in":"query",
+                        "description":"ID of application object.",
+                        "required":true,
+                        "type":"integer",
+                        "default":0,
+                        "format":"int64"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "$ref":"#/definitions/AppInstance"
+                        }
+                    },
+                    "404":{
+                        "description":"The AppInstance does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-appInstances-list-get"
+            }
+        },
+        "/v1/appInstances/testConnection":{
+            "post":{
+                "tags":[
+                    "App Instances"
+                ],
+                "summary":"Test deployment connection.",
+                "description":"",
+                "operationId":"testConnection",
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "in":"body",
+                        "name":"body",
+                        "description":"The name of the deployment.",
+                        "required":true,
+                        "schema":{
+                            "type":"string"
+                        }
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "type":"boolean"
+                        }
+                    },
+                    "404":{
+                        "description":"Test connection failed."
+                    }
+                },
+                "x-internal-id":"v1-appInstances-testConnection-post"
+            }
+        },
+        "/v1/appInstances/{id}":{
+            "get":{
+                "tags":[
+                    "App Instances"
+                ],
+                "summary":"Returns an AppInstance business object for the specified AppInstance ID.",
+                "description":"",
+                "operationId":"getAppInstance",
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"id",
+                        "in":"path",
+                        "description":"ID of application instance.",
+                        "required":true,
+                        "type":"integer",
+                        "default":0,
+                        "format":"int64"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "$ref":"#/definitions/AppInstance"
+                        }
+                    },
+                    "404":{
+                        "description":"The AppInstance does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-appInstances-{id}-get"
+            },
+            "put":{
+                "tags":[
+                    "App Instances"
+                ],
+                "summary":"Updates the AppInstance identified by the AppInstance ID.",
+                "description":"",
+                "operationId":"updateObject",
+                "consumes":[
+                    "application/json"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"id",
+                        "in":"path",
+                        "description":"ID of application instance.",
+                        "required":true,
+                        "type":"integer",
+                        "default":0,
+                        "format":"int64"
+                    },
+                    {
+                        "in":"body",
+                        "name":"body",
+                        "description":"The application instance object to be updated.",
+                        "required":true,
+                        "schema":{
+                            "$ref":"#/definitions/AppInstance"
+                        }
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "type":"boolean"
+                        }
+                    },
+                    "404":{
+                        "description":"The AppInstance does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-appInstances-{id}-put"
+            },
+            "delete":{
+                "tags":[
+                    "App Instances"
+                ],
+                "summary":"Deletes an AppInstance business object identified by its ID.",
+                "description":"",
+                "operationId":"deleteObject",
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"id",
+                        "in":"path",
+                        "description":"ID of application instance.",
+                        "required":true,
+                        "type":"integer",
+                        "default":0,
+                        "format":"int64"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "type":"boolean"
+                        }
+                    },
+                    "404":{
+                        "description":"The AppInstance does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-appInstances-{id}-delete"
+            }
+        },
+        "/v1/customization":{
+            "post":{
+                "tags":[
+                    "Customization"
+                ],
+                "summary":"Returns the customization update result",
+                "description":"",
+                "operationId":"updateCustomization",
+                "consumes":[
+                    "application/json"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"guid",
+                        "in":"query",
+                        "description":"guid",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"sessionId",
+                        "in":"query",
+                        "description":"session id",
+                        "required":false,
+                        "type":"string"
+                    },
+                    {
+                        "name":"action",
+                        "in":"query",
+                        "description":"action",
+                        "required":true,
+                        "type":"string"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "type":"boolean"
+                        }
+                    },
+                    "404":{
+                        "description":"The customization does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-customization-post"
+            }
+        },
+        "/v1/customization/list":{
+            "get":{
+                "tags":[
+                    "Customization"
+                ],
+                "summary":"Returns all customization apps",
+                "description":"",
+                "operationId":"getFlowSteps",
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "$ref":"#/definitions/CustomizationRO"
+                        }
+                    },
+                    "404":{
+                        "description":"The customization list does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-customization-list-get"
+            }
+        },
+        "/v1/eventServices/eventProviderInstanceConfigs/{appInstanceName}":{
+            "get":{
+                "tags":[
+                    "Event Services"
+                ],
+                "summary":"Returns all event provider instance configuration parameters associated with an application instance.",
+                "description":"",
+                "operationId":"getEventInstanceConfigs",
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"appInstanceName",
+                        "in":"path",
+                        "required":true,
+                        "type":"string"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "$ref":"#/definitions/EventProviderInstanceConfigs"
+                        }
+                    },
+                    "404":{
+                        "description":"The EventService does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-eventServices-eventProviderInstanceConfigs-{appInstanceName}-get"
+            }
+        },
+        "/v1/eventServices/processEvent/{appInstanceName}":{
+            "post":{
+                "tags":[
+                    "Event Services"
+                ],
+                "summary":"Creates an event in an application instance.",
+                "description":"",
+                "operationId":"processEvent",
+                "consumes":[
+                    "application/json"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"appInstanceName",
+                        "in":"path",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "in":"body",
+                        "name":"body",
+                        "required":false,
+                        "schema":{
+                            "$ref":"#/definitions/Event"
+                        }
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "type":"boolean"
+                        }
+                    },
+                    "404":{
+                        "description":"The EventService does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-eventServices-processEvent-{appInstanceName}-post"
+            }
+        },
+        "/v1/externalStep/createLog":{
+            "post":{
+                "tags":[
+                    "External Steps"
+                ],
+                "summary":"Creates or log message",
+                "description":"",
+                "operationId":"createLog",
+                "parameters":[
+                    {
+                        "in":"body",
+                        "name":"body",
+                        "required":false,
+                        "schema":{
+                            "type":"object"
+                        }
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "type":"boolean"
+                        }
+                    },
+                    "404":{
+                        "description":"Cannot create log message or you do not have access to create log message"
+                    }
+                },
+                "x-internal-id":"v1-externalStep-createLog-post"
+            }
+        },
+        "/v1/externalStep/createWarningLog":{
+            "post":{
+                "tags":[
+                    "External Steps"
+                ],
+                "summary":"Creates warning log message",
+                "description":"",
+                "operationId":"createWarningLog",
+                "parameters":[
+                    {
+                        "in":"body",
+                        "name":"body",
+                        "required":false,
+                        "schema":{
+                            "type":"object"
+                        }
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "type":"boolean"
+                        }
+                    },
+                    "404":{
+                        "description":"Cannot warning log message or you do not have access to create warning log message"
+                    }
+                },
+                "x-internal-id":"v1-externalStep-createWarningLog-post"
+            }
+        },
+        "/v1/externalStep/extReq":{
+            "get":{
+                "tags":[
+                    "External Steps"
+                ],
+                "summary":"Returns External Step Requests by flow step instance id",
+                "description":"",
+                "operationId":"getExternalStepRequestsByExtReqId",
+                "parameters":[
+                    {
+                        "name":"extReqId",
+                        "in":"query",
+                        "required":false,
+                        "type":"integer",
+                        "format":"int64"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "$ref":"#/definitions/ExternalStepRequest"
+                        }
+                    },
+                    "404":{
+                        "description":"The External Step Request does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-externalStep-extReq-get"
+            }
+        },
+        "/v1/externalStep/flowStepInst":{
+            "get":{
+                "tags":[
+                    "External Steps"
+                ],
+                "summary":"Returns External Step Requests by flow step instance id",
+                "description":"",
+                "operationId":"getExternalStepRequests",
+                "parameters":[
+                    {
+                        "name":"flowStepInstId",
+                        "in":"query",
+                        "required":false,
+                        "type":"integer",
+                        "format":"int64"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "$ref":"#/definitions/ExternalStepRequest"
+                        }
+                    },
+                    "404":{
+                        "description":"The External Step Request does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-externalStep-flowStepInst-get"
+            }
+        },
+        "/v1/externalStep/getObjectKeyName":{
+            "post":{
+                "tags":[
+                    "External Steps"
+                ],
+                "summary":"Retreives the object key name value",
+                "description":"",
+                "operationId":"getObjectKeyName",
+                "parameters":[
+                    {
+                        "in":"body",
+                        "name":"body",
+                        "required":false,
+                        "schema":{
+                            "type":"object"
+                        }
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "type":"string"
+                        }
+                    },
+                    "404":{
+                        "description":"Unable to retrieve the object key name"
+                    }
+                },
+                "x-internal-id":"v1-externalStep-getObjectKeyName-post"
+            }
+        },
+        "/v1/externalStep/loadInstanceConfig":{
+            "get":{
+                "tags":[
+                    "External Steps"
+                ],
+                "summary":"Retrieve provider deployment configuration for validation",
+                "description":"",
+                "operationId":"loadAppInstanceConfig",
+                "parameters":[
+                    {
+                        "name":"extReqId",
+                        "in":"query",
+                        "required":false,
+                        "type":"integer",
+                        "format":"int64"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "type":"object",
+                            "additionalProperties":{
+                                "type":"object"
+                            }
+                        }
+                    },
+                    "404":{
+                        "description":"The configuration does not exit or you do not have access."
+                    }
+                },
+                "x-internal-id":"v1-externalStep-loadInstanceConfig-get"
+            }
+        },
+        "/v1/externalStep/loadObjects":{
+            "post":{
+                "tags":[
+                    "External Steps"
+                ],
+                "summary":"Returns Load Objects by app instance id and flow id",
+                "description":"",
+                "operationId":"loadObjects",
+                "consumes":[
+                    "multipart/mixed"
+                ],
+                "produces":[
+                    "multipart/form-data"
+                ],
+                "parameters":[
+                    {
+                        "in":"body",
+                        "name":"body",
+                        "required":false,
+                        "schema":{
+                            "$ref":"#/definitions/MultiPart"
+                        }
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "$ref":"#/definitions/MultiPart"
+                        }
+                    },
+                    "404":{
+                        "description":"The Load Objects do not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-externalStep-loadObjects-post"
+            }
+        },
+        "/v1/externalStep/pending":{
+            "get":{
+                "tags":[
+                    "External Steps"
+                ],
+                "summary":"Returns all pending External Step Requests by GUID",
+                "description":"",
+                "operationId":"getPendingExternalStepRequests",
+                "parameters":[
+                    {
+                        "name":"sessionId",
+                        "in":"query",
+                        "required":false,
+                        "type":"string"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "$ref":"#/definitions/ExternalStepRequest"
+                        }
+                    },
+                    "404":{
+                        "description":"The External Step Request does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-externalStep-pending-get"
+            }
+        },
+        "/v1/externalStep/retrieveAttachment":{
+            "get":{
+                "tags":[
+                    "External Steps"
+                ],
+                "summary":"Returns Attachment byte array by attachment id",
+                "description":"",
+                "operationId":"retrieveAttachmentByAttachmentId",
+                "produces":[
+                    "multipart/form-data"
+                ],
+                "parameters":[
+                    {
+                        "name":"attachmentId",
+                        "in":"query",
+                        "required":false,
+                        "type":"integer",
+                        "format":"int64"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "$ref":"#/definitions/MultiPart"
+                        }
+                    },
+                    "404":{
+                        "description":"Can not retrieve Attachment or you do not have access to retrieve Attachment"
+                    }
+                },
+                "x-internal-id":"v1-externalStep-retrieveAttachment-get"
+            }
+        },
+        "/v1/externalStep/sendChildFlowResult":{
+            "post":{
+                "tags":[
+                    "External Steps"
+                ],
+                "summary":"Sends child flow info",
+                "description":"",
+                "operationId":"sendChildFlowInfoList",
+                "consumes":[
+                    "multipart/mixed"
+                ],
+                "produces":[
+                    "text/plain"
+                ],
+                "parameters":[
+                    {
+                        "in":"body",
+                        "name":"body",
+                        "required":false,
+                        "schema":{
+                            "$ref":"#/definitions/MultiPart"
+                        }
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "$ref":"#/definitions/MultiPart"
+                        }
+                    },
+                    "404":{
+                        "description":"Cannot send child flow info or you do not have access to sendChildFlowInfoList"
+                    }
+                },
+                "x-internal-id":"v1-externalStep-sendChildFlowResult-post"
+            }
+        },
+        "/v1/externalStep/sendObjectLog":{
+            "post":{
+                "tags":[
+                    "External Steps"
+                ],
+                "summary":"Sends object log",
+                "description":"",
+                "operationId":"sendObjectLogList",
+                "consumes":[
+                    "multipart/mixed"
+                ],
+                "produces":[
+                    "text/plain"
+                ],
+                "parameters":[
+                    {
+                        "in":"body",
+                        "name":"body",
+                        "required":false,
+                        "schema":{
+                            "$ref":"#/definitions/MultiPart"
+                        }
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "$ref":"#/definitions/MultiPart"
+                        }
+                    },
+                    "404":{
+                        "description":"Cannot send object log info or you do not have access to sendChildFlowInfoList"
+                    }
+                },
+                "x-internal-id":"v1-externalStep-sendObjectLog-post"
+            }
+        },
+        "/v1/externalStep/sendProjectKepMap":{
+            "post":{
+                "tags":[
+                    "External Steps"
+                ],
+                "summary":"Sends project key map",
+                "description":"",
+                "operationId":"sendProjectKepMap",
+                "consumes":[
+                    "multipart/mixed"
+                ],
+                "produces":[
+                    "text/plain"
+                ],
+                "parameters":[
+                    {
+                        "in":"body",
+                        "name":"body",
+                        "required":false,
+                        "schema":{
+                            "$ref":"#/definitions/MultiPart"
+                        }
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "$ref":"#/definitions/MultiPart"
+                        }
+                    },
+                    "404":{
+                        "description":"Cannot send project key map or you do not have access to sendProjectKepMap"
+                    }
+                },
+                "x-internal-id":"v1-externalStep-sendProjectKepMap-post"
+            }
+        },
+        "/v1/externalStep/sendStepResult":{
+            "post":{
+                "tags":[
+                    "External Steps"
+                ],
+                "summary":"Sends External Step execution result",
+                "description":"",
+                "operationId":"sendStepResult",
+                "consumes":[
+                    "multipart/mixed"
+                ],
+                "produces":[
+                    "text/plain"
+                ],
+                "parameters":[
+                    {
+                        "in":"body",
+                        "name":"body",
+                        "required":false,
+                        "schema":{
+                            "$ref":"#/definitions/MultiPart"
+                        }
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "$ref":"#/definitions/MultiPart"
+                        }
+                    },
+                    "404":{
+                        "description":"Cannot update ExternalStep execution result or you do not have access to send result"
+                    }
+                },
+                "x-internal-id":"v1-externalStep-sendStepResult-post"
+            }
+        },
+        "/v1/externalStep/sendValidationResult":{
+            "get":{
+                "tags":[
+                    "External Steps"
+                ],
+                "summary":"Sends deployment validation result",
+                "description":"",
+                "operationId":"sendValidationResult",
+                "parameters":[
+                    {
+                        "name":"extReqId",
+                        "in":"query",
+                        "required":false,
+                        "type":"integer",
+                        "format":"int64"
+                    },
+                    {
+                        "name":"result",
+                        "in":"query",
+                        "required":false,
+                        "type":"string"
+                    },
+                    {
+                        "name":"message",
+                        "in":"query",
+                        "required":false,
+                        "type":"string"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "type":"string"
+                        }
+                    },
+                    "404":{
+                        "description":"Can not update the validation result or you do not have access."
+                    }
+                },
+                "x-internal-id":"v1-externalStep-sendValidationResult-get"
+            }
+        },
+        "/v1/externalStep/start":{
+            "get":{
+                "tags":[
+                    "External Steps"
+                ],
+                "summary":"Starts external step and sends request data",
+                "description":"",
+                "operationId":"startExternalStep",
+                "produces":[
+                    "multipart/form-data"
+                ],
+                "parameters":[
+                    {
+                        "name":"extReqId",
+                        "in":"query",
+                        "required":false,
+                        "type":"integer",
+                        "format":"int64"
+                    },
+                    {
+                        "name":"gatewaySessionId",
+                        "in":"query",
+                        "required":false,
+                        "type":"string"
+                    },
+                    {
+                        "name":"sessionType",
+                        "in":"query",
+                        "required":false,
+                        "type":"string",
+                        "default":"customization"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "$ref":"#/definitions/MultiPart"
+                        }
+                    },
+                    "404":{
+                        "description":"Cannot start ExternalStep execution or you do not have access to start it."
+                    }
+                },
+                "x-internal-id":"v1-externalStep-start-get"
+            }
+        },
+        "/v1/externalStep/storeAttachment":{
+            "post":{
+                "tags":[
+                    "External Steps"
+                ],
+                "summary":"Stores Attachment byte array",
+                "description":"",
+                "operationId":"storeAttachment",
+                "consumes":[
+                    "multipart/mixed"
+                ],
+                "parameters":[
+                    {
+                        "in":"body",
+                        "name":"body",
+                        "required":false,
+                        "schema":{
+                            "$ref":"#/definitions/MultiPart"
+                        }
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "type":"boolean"
+                        }
+                    },
+                    "404":{
+                        "description":"Can not store Attachment or you do not have access to store Attachment"
+                    }
+                },
+                "x-internal-id":"v1-externalStep-storeAttachment-post"
+            }
+        },
+        "/v1/externalStep/writeMessage":{
+            "post":{
+                "tags":[
+                    "External Steps"
+                ],
+                "summary":"Creates or log message",
+                "description":"",
+                "operationId":"writeMessage",
+                "parameters":[
+                    {
+                        "in":"body",
+                        "name":"body",
+                        "required":false,
+                        "schema":{
+                            "type":"object"
+                        }
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "type":"boolean"
+                        }
+                    },
+                    "404":{
+                        "description":"Cannot create message or you do not have access to create message"
+                    }
+                },
+                "x-internal-id":"v1-externalStep-writeMessage-post"
+            }
+        },
+        "/v1/flowDefinitionApps/list":{
+            "get":{
+                "tags":[
+                    "Flow Definition Apps"
+                ],
+                "summary":"Returns all flowDefinitionApp business objects.",
+                "description":"",
+                "operationId":"getFlowDefinitionApps",
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"flowDefinitionId",
+                        "in":"query",
+                        "description":"ID of flow definition object.",
+                        "required":true,
+                        "type":"integer",
+                        "default":0,
+                        "format":"int64"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "$ref":"#/definitions/FlowDefinitionApp"
+                        }
+                    },
+                    "404":{
+                        "description":"The FlowDefinitionApp does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-flowDefinitionApps-list-get"
+            }
+        },
+        "/v1/flowFieldMapTemplates/list":{
+            "get":{
+                "tags":[
+                    "Flow Field Map Templates"
+                ],
+                "summary":"Returns all flowFieldTemplateMap business objects.",
+                "description":"",
+                "operationId":"getFlowTemplateMaps",
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"flowId",
+                        "in":"query",
+                        "description":"ID of flow object.",
+                        "required":true,
+                        "type":"integer",
+                        "default":0,
+                        "format":"int64"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "$ref":"#/definitions/FlowTemplateMap"
+                        }
+                    },
+                    "404":{
+                        "description":"The FlowTemplateMap does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-flowFieldMapTemplates-list-get"
+            }
+        },
+        "/v1/flowFieldMapTemplates/{id}":{
+            "get":{
+                "tags":[
+                    "Flow Field Map Templates"
+                ],
+                "summary":"Returns the flowFieldTemplateMap business object for the specified flowFieldMapTemplate ID.",
+                "description":"",
+                "operationId":"getFlowTemplateMap",
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"id",
+                        "in":"path",
+                        "description":"ID of flow template map object.",
+                        "required":true,
+                        "type":"integer",
+                        "default":0,
+                        "format":"int64"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "$ref":"#/definitions/FlowTemplateMap"
+                        }
+                    },
+                    "404":{
+                        "description":"The FlowTemplateMap does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-flowFieldMapTemplates-{id}-get"
+            }
+        },
+        "/v1/flowInstances/childrenOf/{id}":{
+            "get":{
+                "tags":[
+                    "Flow Instances"
+                ],
+                "summary":"Returns all child flowInstance business objects for the specified  parent FlowInstances ID.",
+                "description":"",
+                "operationId":"getChildFlowInstances",
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"id",
+                        "in":"path",
+                        "description":"ID of flow instance.",
+                        "required":true,
+                        "type":"integer",
+                        "format":"int64"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "$ref":"#/definitions/FlowInstance"
+                        }
+                    },
+                    "404":{
+                        "description":"The FlowInstance does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-flowInstances-childrenOf-{id}-get"
+            }
+        },
+        "/v1/flowInstances/list":{
+            "get":{
+                "tags":[
+                    "Flow Instances"
+                ],
+                "summary":"Returns all flowInstance business objects.",
+                "description":"",
+                "operationId":"getFlowInstances",
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"flowId",
+                        "in":"query",
+                        "description":"ID of flow object.",
+                        "required":true,
+                        "type":"integer",
+                        "default":0,
+                        "format":"int64"
+                    },
+                    {
+                        "name":"flowInstanceStatus",
+                        "in":"query",
+                        "required":false,
+                        "type":"string"
+                    },
+                    {
+                        "name":"isUser",
+                        "in":"query",
+                        "required":false,
+                        "type":"boolean",
+                        "default":false
+                    },
+                    {
+                        "name":"jobFilter",
+                        "in":"query",
+                        "required":false,
+                        "type":"integer",
+                        "default":0,
+                        "format":"int64"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "$ref":"#/definitions/FlowInstance"
+                        }
+                    },
+                    "404":{
+                        "description":"The FlowInstance does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-flowInstances-list-get"
+            }
+        },
+        "/v1/flowInstances/{id}":{
+            "get":{
+                "tags":[
+                    "Flow Instances"
+                ],
+                "summary":"Returns the flowInstance business object for the specified flowInstance ID.",
+                "description":"",
+                "operationId":"getFlowInstance",
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"id",
+                        "in":"path",
+                        "description":"ID of flow instance.",
+                        "required":true,
+                        "type":"integer",
+                        "default":0,
+                        "format":"int64"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "$ref":"#/definitions/FlowInstance"
+                        }
+                    },
+                    "404":{
+                        "description":"The FlowInstance does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-flowInstances-{id}-get"
+            }
+        },
+        "/v1/flowLoadObjects/list":{
+            "get":{
+                "tags":[
+                    "Flow Load Objects"
+                ],
+                "summary":"Returns all FlowLoadObject business objects.",
+                "description":"",
+                "operationId":"getFlowLoadObjects",
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"flowId",
+                        "in":"query",
+                        "description":"ID of flow object.",
+                        "required":true,
+                        "type":"integer",
+                        "default":0,
+                        "format":"int64"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "$ref":"#/definitions/FlowLoadObject"
+                        }
+                    },
+                    "404":{
+                        "description":"The FlowLoadObject does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-flowLoadObjects-list-get"
+            }
+        },
+        "/v1/flowParameters/list":{
+            "get":{
+                "tags":[
+                    "Flow Parameters"
+                ],
+                "summary":"Returns all flowParameter business objects.",
+                "description":"",
+                "operationId":"getFlowParameters",
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"flowId",
+                        "in":"query",
+                        "description":"ID of flow object.",
+                        "required":true,
+                        "type":"integer",
+                        "default":0,
+                        "format":"int64"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "$ref":"#/definitions/FlowParameter"
+                        }
+                    },
+                    "404":{
+                        "description":"The FlowParameter does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-flowParameters-list-get"
+            }
+        },
+        "/v1/flowParameters/{id}":{
+            "get":{
+                "tags":[
+                    "Flow Parameters"
+                ],
+                "summary":"Returns the flowParameter business object for the specified flowParameter ID.",
+                "description":"",
+                "operationId":"getFlowParameter",
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"id",
+                        "in":"path",
+                        "description":"ID of flow parameter object.",
+                        "required":true,
+                        "type":"integer",
+                        "default":0,
+                        "format":"int64"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "$ref":"#/definitions/FlowParameter"
+                        }
+                    },
+                    "404":{
+                        "description":"The FlowParameter does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-flowParameters-{id}-get"
+            }
+        },
+        "/v1/flowStepInstanceMessages/download/{id}":{
+            "get":{
+                "tags":[
+                    "Flow Step Instance Messages"
+                ],
+                "summary":" Download FlowStepInstanceMessage objects",
+                "description":"",
+                "operationId":"getZipFile",
+                "produces":[
+                    "application/x-zip-compressed"
+                ],
+                "parameters":[
+                    {
+                        "name":"id",
+                        "in":"path",
+                        "description":"ID of flow step instance message object.",
+                        "required":true,
+                        "type":"integer",
+                        "default":0,
+                        "format":"int64"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "$ref":"#/definitions/FlowStepInstanceMessage"
+                        }
+                    }
+                },
+                "x-internal-id":"v1-flowStepInstanceMessages-download-{id}-get"
+            }
+        },
+        "/v1/flowStepInstanceMessages/{id}":{
+            "get":{
+                "tags":[
+                    "Flow Step Instance Messages"
+                ],
+                "summary":"Returns a FlowStepInstanceMessage business object for the specified FlowStepInstanceMessage ID.",
+                "description":"",
+                "operationId":"getFlowStepInstanceMessage",
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"id",
+                        "in":"path",
+                        "description":"ID of flow step instance message object.",
+                        "required":true,
+                        "type":"integer",
+                        "default":0,
+                        "format":"int64"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "$ref":"#/definitions/FlowStepInstanceMessage"
+                        }
+                    },
+                    "404":{
+                        "description":"The FlowStepInstanceMessage does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-flowStepInstanceMessages-{id}-get"
+            }
+        },
+        "/v1/flowStepInstances/list":{
+            "get":{
+                "tags":[
+                    "Flow Step Instances"
+                ],
+                "summary":"Returns all flowStepInstance business objects.",
+                "description":"",
+                "operationId":"getFlowStepInstancesWithLogs",
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"flowInstanceId",
+                        "in":"query",
+                        "description":"ID of flow instance object.",
+                        "required":true,
+                        "type":"integer",
+                        "default":0,
+                        "format":"int64"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "$ref":"#/definitions/FlowStepInstance"
+                        }
+                    },
+                    "404":{
+                        "description":"The FlowStepInstance does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-flowStepInstances-list-get"
+            }
+        },
+        "/v1/flowStepInstances/{id}":{
+            "get":{
+                "tags":[
+                    "Flow Step Instances"
+                ],
+                "summary":"Returns the flowStepInstance business object for the specified flowStepInstance ID.",
+                "description":"",
+                "operationId":"getFlowStepInstance",
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"id",
+                        "in":"path",
+                        "description":"ID of flow step instance object.",
+                        "required":true,
+                        "type":"integer",
+                        "default":0,
+                        "format":"int64"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "$ref":"#/definitions/FlowStepInstance"
+                        }
+                    },
+                    "404":{
+                        "description":"The FlowStepInstance does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-flowStepInstances-{id}-get"
+            }
+        },
+        "/v1/flows":{
+            "post":{
+                "tags":[
+                    "Flows"
+                ],
+                "summary":"Creates a Flow business object.",
+                "description":"",
+                "operationId":"createObject",
+                "consumes":[
+                    "application/json"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "in":"body",
+                        "name":"body",
+                        "description":"The flow object to be created.",
+                        "required":true,
+                        "schema":{
+                            "$ref":"#/definitions/Flow"
+                        }
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "type":"boolean"
+                        }
+                    },
+                    "404":{
+                        "description":"The Activity does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-flows-post"
+            }
+        },
+        "/v1/flows/delete/{id}":{
+            "delete":{
+                "tags":[
+                    "Flows"
+                ],
+                "summary":"Deletes the Flow business object for the specified Flow ID.",
+                "description":"",
+                "operationId":"deleteFlow",
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"id",
+                        "in":"path",
+                        "description":"ID of flow object.",
+                        "required":true,
+                        "type":"integer",
+                        "default":0,
+                        "format":"int64"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "type":"boolean"
+                        }
+                    },
+                    "404":{
+                        "description":"The Activity does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-flows-delete-{id}-delete"
+            }
+        },
+        "/v1/flows/list":{
+            "get":{
+                "tags":[
+                    "Flows"
+                ],
+                "summary":"Returns all Flow business objects.",
+                "description":"",
+                "operationId":"getFlows",
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"flowDefinitionId",
+                        "in":"query",
+                        "description":"ID of flow definition object.",
+                        "required":true,
+                        "type":"integer",
+                        "default":-1,
+                        "format":"int64"
+                    },
+                    {
+                        "name":"isUser",
+                        "in":"query",
+                        "description":"Use current user name if 'true'.",
+                        "required":false,
+                        "type":"boolean",
+                        "default":false
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "$ref":"#/definitions/Flow"
+                        }
+                    },
+                    "404":{
+                        "description":"The Activity does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-flows-list-get"
+            }
+        },
+        "/v1/flows/{id}":{
+            "get":{
+                "tags":[
+                    "Flows"
+                ],
+                "summary":"Retuns the Flow business object for the specified Flow ID.",
+                "description":"",
+                "operationId":"getFlow",
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"id",
+                        "in":"path",
+                        "description":"ID of flow object.",
+                        "required":true,
+                        "type":"integer",
+                        "default":0,
+                        "format":"int64"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "$ref":"#/definitions/Flow"
+                        }
+                    },
+                    "404":{
+                        "description":"The Activity does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-flows-{id}-get"
+            },
+            "put":{
+                "tags":[
+                    "Flows"
+                ],
+                "summary":"Updates the Flow business object for the specified Flow ID.",
+                "description":"",
+                "operationId":"updateObject",
+                "consumes":[
+                    "application/json"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"id",
+                        "in":"path",
+                        "description":"ID of flow object.",
+                        "required":true,
+                        "type":"integer",
+                        "default":0,
+                        "format":"int64"
+                    },
+                    {
+                        "in":"body",
+                        "name":"body",
+                        "description":"The flow object to be updated.",
+                        "required":true,
+                        "schema":{
+                            "$ref":"#/definitions/Flow"
+                        }
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "type":"boolean"
+                        }
+                    },
+                    "404":{
+                        "description":"The Activity does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-flows-{id}-put"
+            },
+            "delete":{
+                "tags":[
+                    "Flows"
+                ],
+                "summary":"Deletes the Flow business object for the specified Flow ID.",
+                "description":"",
+                "operationId":"deleteObject",
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"id",
+                        "in":"path",
+                        "description":"ID of flow object.",
+                        "required":true,
+                        "type":"integer",
+                        "default":0,
+                        "format":"int64"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "type":"boolean"
+                        }
+                    },
+                    "404":{
+                        "description":"The Activity does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-flows-{id}-delete"
+            }
+        },
+        "/v1/objectLogData/summary":{
+            "get":{
+                "tags":[
+                    "Object Log",
+                    "External Steps"
+                ],
+                "summary":"Returns the object level log detail.",
+                "description":"",
+                "operationId":"getObjLogDetails",
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"objectName",
+                        "in":"query",
+                        "required":false,
+                        "type":"string"
+                    },
+                    {
+                        "name":"flowInstId",
+                        "in":"query",
+                        "required":false,
+                        "type":"integer",
+                        "default":0,
+                        "format":"int64"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "$ref":"#/definitions/ObjectLogDetailsRO"
+                        }
+                    },
+                    "404":{
+                        "description":"The ParameterValue does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-objectLogData-summary-get"
+            }
+        },
+        "/v1/parameterValues/byJobId":{
+            "get":{
+                "tags":[
+                    "Parameter Values"
+                ],
+                "summary":"Returns the parameterValue businesss objects for the specified Job ID.",
+                "description":"",
+                "operationId":"getParameterValuesByFlowInstance",
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"jobId",
+                        "in":"query",
+                        "description":"ID of flow instance object.",
+                        "required":true,
+                        "type":"integer",
+                        "default":0,
+                        "format":"int64"
+                    },
+                    {
+                        "name":"paramName",
+                        "in":"query",
+                        "description":"The name of the parameter.",
+                        "required":true,
+                        "type":"string"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "$ref":"#/definitions/ParameterValue"
+                        }
+                    },
+                    "404":{
+                        "description":"The ParameterValue does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-parameterValues-byJobId-get"
+            }
+        },
+        "/v1/parameterValues/list":{
+            "get":{
+                "tags":[
+                    "Parameter Values"
+                ],
+                "summary":"Returns all parameterValue business objects.",
+                "description":"",
+                "operationId":"getParameterValues",
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"scheduleId",
+                        "in":"query",
+                        "description":"ID of flow schedule object.",
+                        "required":true,
+                        "type":"integer",
+                        "default":0,
+                        "format":"int64"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "$ref":"#/definitions/ParameterValue"
+                        }
+                    },
+                    "404":{
+                        "description":"The ParameterValue does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-parameterValues-list-get"
+            }
+        },
+        "/v1/parameterValues/{id}":{
+            "get":{
+                "tags":[
+                    "Parameter Values"
+                ],
+                "summary":"Returns the parameterValue business object for the specified parameterValue ID.",
+                "description":"",
+                "operationId":"getParameterValue",
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"id",
+                        "in":"path",
+                        "description":"ID of parameter value object.",
+                        "required":true,
+                        "type":"integer",
+                        "default":0,
+                        "format":"int64"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "$ref":"#/definitions/ParameterValue"
+                        }
+                    },
+                    "404":{
+                        "description":"The ParameterValue does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-parameterValues-{id}-get"
+            }
+        },
+        "/v1/provider":{
+            "post":{
+                "tags":[
+                    "Provider"
+                ],
+                "summary":"Returns the provider update result",
+                "description":"",
+                "operationId":"handleExternalProviderSession",
+                "consumes":[
+                    "application/json"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"guid",
+                        "in":"query",
+                        "description":"guid",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"sessionId",
+                        "in":"query",
+                        "description":"session id",
+                        "required":false,
+                        "type":"string"
+                    },
+                    {
+                        "name":"action",
+                        "in":"query",
+                        "description":"action",
+                        "required":true,
+                        "type":"string"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "type":"boolean"
+                        }
+                    },
+                    "404":{
+                        "description":"The provider does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-provider-post"
+            }
+        },
+        "/v1/provider/delete":{
+            "post":{
+                "tags":[
+                    "Provider"
+                ],
+                "summary":"Deletes an external provider identified by its ID.",
+                "description":"",
+                "operationId":"deleteExternalProvider",
+                "consumes":[
+                    "application/json"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"id",
+                        "in":"query",
+                        "required":false,
+                        "type":"integer",
+                        "format":"int64"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "type":"boolean"
+                        }
+                    },
+                    "404":{
+                        "description":"The Extermal provider does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-provider-delete-post"
+            }
+        },
+        "/v1/services/createJobProcess/{id}":{
+            "post":{
+                "tags":[
+                    "Services"
+                ],
+                "summary":"Creates a job process.",
+                "description":"",
+                "operationId":"createJobProcess",
+                "consumes":[
+                    "application/json"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"id",
+                        "in":"path",
+                        "description":"ID of flow schedule object.",
+                        "required":true,
+                        "type":"integer",
+                        "default":1,
+                        "format":"int64"
+                    },
+                    {
+                        "name":"review",
+                        "in":"query",
+                        "description":"Flag to indicate if review is enabled.",
+                        "required":false,
+                        "type":"boolean",
+                        "default":false
+                    },
+                    {
+                        "name":"runOnChain",
+                        "in":"query",
+                        "description":"Flag to indicate if run on chain is enabled.",
+                        "required":false,
+                        "type":"boolean",
+                        "default":true
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "type":"boolean"
+                        }
+                    },
+                    "404":{
+                        "description":"The Service object does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-services-createJobProcess-{id}-post"
+            }
+        },
+        "/v1/services/createJobProcessWithParameters/{id}":{
+            "post":{
+                "tags":[
+                    "Services"
+                ],
+                "summary":"Creates a job process specified by parameters.",
+                "description":"",
+                "operationId":"createJobProcess",
+                "consumes":[
+                    "application/json"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"id",
+                        "in":"path",
+                        "description":"ID of flow schedule object.",
+                        "required":true,
+                        "type":"integer",
+                        "default":1,
+                        "format":"int64"
+                    },
+                    {
+                        "in":"body",
+                        "name":"body",
+                        "required":false,
+                        "schema":{
+                            "type":"object",
+                            "additionalProperties":{
+                                "type":"string"
+                            }
+                        }
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "type":"boolean"
+                        }
+                    },
+                    "404":{
+                        "description":"The Service object does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-services-createJobProcessWithParameters-{id}-post"
+            }
+        },
+        "/v1/settings":{
+            "post":{
+                "tags":[
+                    "Settings"
+                ],
+                "summary":"Updates settings business object.",
+                "description":"",
+                "operationId":"updateObject",
+                "consumes":[
+                    "application/json"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "in":"body",
+                        "name":"body",
+                        "description":"The settings object to be updated.",
+                        "required":true,
+                        "schema":{
+                            "$ref":"#/definitions/Settings"
+                        }
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "type":"boolean"
+                        }
+                    },
+                    "404":{
+                        "description":"The Settings does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-settings-post"
+            }
+        },
+        "/v1/settings/list":{
+            "get":{
+                "tags":[
+                    "Settings"
+                ],
+                "summary":"Returns all ParameterValue business objects associated with a setting.",
+                "description":"",
+                "operationId":"getSettings",
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "$ref":"#/definitions/ParameterValue"
+                        }
+                    },
+                    "404":{
+                        "description":"The Settings does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-settings-list-get"
+            }
+        },
+        "/v1/synchronizations":{
+            "post":{
+                "tags":[
+                    "Synchronizations"
+                ],
+                "summary":"Creates a FlowSchedule business object.",
+                "description":"",
+                "operationId":"createFlowSchedule",
+                "consumes":[
+                    "application/json"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "in":"body",
+                        "name":"body",
+                        "description":"The flow schedule object to be created.",
+                        "required":true,
+                        "schema":{
+                            "$ref":"#/definitions/FlowSchedule"
+                        }
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "type":"boolean"
+                        }
+                    },
+                    "404":{
+                        "description":"The FlowSchedule does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-synchronizations-post"
+            }
+        },
+        "/v1/synchronizations/delete/{id}":{
+            "delete":{
+                "tags":[
+                    "Synchronizations"
+                ],
+                "summary":"Deletes the synchronization for the specified synchronization ID.",
+                "description":"",
+                "operationId":"deleteFlowSchedule",
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"id",
+                        "in":"path",
+                        "description":"ID of flow schedule object.",
+                        "required":true,
+                        "type":"integer",
+                        "default":0,
+                        "format":"int64"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "type":"boolean"
+                        }
+                    },
+                    "404":{
+                        "description":"The FlowSchedule does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-synchronizations-delete-{id}-delete"
+            }
+        },
+        "/v1/synchronizations/list":{
+            "get":{
+                "tags":[
+                    "Synchronizations"
+                ],
+                "summary":"Returns all FlowSchedule business objects.",
+                "description":"",
+                "operationId":"getSynchronizations",
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"deploymentName",
+                        "in":"query",
+                        "description":"The name of deployment.",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"flowDefinitiontype",
+                        "in":"query",
+                        "description":"The flow definition type.",
+                        "required":true,
+                        "type":"string"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "$ref":"#/definitions/FlowSchedule"
+                        }
+                    },
+                    "404":{
+                        "description":"The FlowSchedule does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-synchronizations-list-get"
+            }
+        },
+        "/v1/synchronizations/{id}":{
+            "get":{
+                "tags":[
+                    "Synchronizations"
+                ],
+                "summary":"Returns all flowSchedule business objects associated with a synchronization for the specified synchronization ID.",
+                "description":"",
+                "operationId":"getFlowSchedule",
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"id",
+                        "in":"path",
+                        "description":"ID of flow schedule object.",
+                        "required":true,
+                        "type":"integer",
+                        "default":0,
+                        "format":"int64"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "$ref":"#/definitions/FlowSchedule"
+                        }
+                    },
+                    "404":{
+                        "description":"The FlowSchedule does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-synchronizations-{id}-get"
+            },
+            "put":{
+                "tags":[
+                    "Synchronizations"
+                ],
+                "summary":"Updates the synchronization identified by the synchronization ID.",
+                "description":"",
+                "operationId":"updateObject",
+                "consumes":[
+                    "application/json"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"id",
+                        "in":"path",
+                        "description":"ID of flow schedule object.",
+                        "required":true,
+                        "type":"integer",
+                        "default":0,
+                        "format":"int64"
+                    },
+                    {
+                        "in":"body",
+                        "name":"body",
+                        "description":"The flow schedule object to be updated.",
+                        "required":true,
+                        "schema":{
+                            "$ref":"#/definitions/FlowSchedule"
+                        }
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "type":"boolean"
+                        }
+                    },
+                    "404":{
+                        "description":"The FlowSchedule does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-synchronizations-{id}-put"
+            },
+            "delete":{
+                "tags":[
+                    "Synchronizations"
+                ],
+                "summary":"Deletes the synchronization for the specified synchronization ID.",
+                "description":"",
+                "operationId":"deleteObject",
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"id",
+                        "in":"path",
+                        "description":"ID of flow schedule object.",
+                        "required":true,
+                        "type":"integer",
+                        "default":0,
+                        "format":"int64"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"successful operation",
+                        "schema":{
+                            "type":"boolean"
+                        }
+                    },
+                    "404":{
+                        "description":"The FlowSchedule does not exist or you do not have access to it."
+                    }
+                },
+                "x-internal-id":"v1-synchronizations-{id}-delete"
+            }
+        }
+    },
+    "definitions":{
+        "App":{
+            "type":"object",
+            "properties":{
+                "name":{
+                    "type":"string",
+                    "description":"The name of the application associated with the flow."
+                },
+                "id":{
+                    "type":"integer",
+                    "format":"int64",
+                    "description":"The unique ID of the application generated by the system."
+                },
+                "version":{
+                    "type":"string",
+                    "description":"The application version number."
+                },
+                "description":{
+                    "type":"string",
+                    "description":"A description of the application."
+                },
+                "appInstances":{
+                    "type":"array",
+                    "description":"The list of application instances associated with a flow.",
+                    "uniqueItems":true,
+                    "items":{
+                        "$ref":"#/definitions/AppInstance"
+                    }
+                },
+                "supportFeedback":{
+                    "type":"boolean",
+                    "description":"The indicator which determines whether the feedback step in a business flow is enabled.",
+                    "default":false
+                },
+                "providerPath":{
+                    "type":"string",
+                    "description":"The path and the folder location of the provider associated with an application. For example, location of the primeprovider folder associated with the Oracle Primavera Prime application."
+                },
+                "providerName":{
+                    "type":"string",
+                    "description":"The Oracle Primavera Gateway provider associated with an application."
+                },
+                "external":{
+                    "type":"boolean",
+                    "description":"The indicator which determines whether the provider is external.",
+                    "default":false
+                }
+            },
+            "description":"A reference to the App business object.",
+            "xml":{
+                "name":"App"
+            }
+        },
+        "BodyPart":{
+            "type":"object",
+            "properties":{
+                "contentDisposition":{
+                    "$ref":"#/definitions/ContentDisposition"
+                },
+                "entity":{
+                    "type":"object"
+                },
+                "headers":{
+                    "type":"object",
+                    "additionalProperties":{
+                        "type":"array",
+                        "items":{
+                            "type":"string"
+                        }
+                    }
+                },
+                "mediaType":{
+                    "$ref":"#/definitions/MediaType"
+                },
+                "messageBodyWorkers":{
+                    "$ref":"#/definitions/MessageBodyWorkers"
+                },
+                "parent":{
+                    "$ref":"#/definitions/MultiPart"
+                },
+                "providers":{
+                    "$ref":"#/definitions/Providers"
+                },
+                "parameterizedHeaders":{
+                    "type":"object",
+                    "additionalProperties":{
+                        "type":"array",
+                        "items":{
+                            "$ref":"#/definitions/ParameterizedHeader"
+                        }
+                    }
+                }
+            }
+        },
+        "ParameterizedHeader":{
+            "type":"object",
+            "properties":{
+                "value":{
+                    "type":"string"
+                },
+                "parameters":{
+                    "type":"object",
+                    "additionalProperties":{
+                        "type":"string"
+                    }
+                }
+            }
+        },
+        "ProviderRO":{
+            "type":"object",
+            "required":[
+                "id",
+                "name",
+                "version"
+            ],
+            "properties":{
+                "name":{
+                    "type":"string"
+                },
+                "id":{
+                    "type":"integer",
+                    "format":"int64"
+                },
+                "type":{
+                    "type":"string",
+                    "xml":{
+                        "name":"provider_type"
+                    },
+                    "description":"Provider type: Type1, Type2",
+                    "enum":[
+                        "TYPE1",
+                        "TYPE2"
+                    ]
+                },
+                "path":{
+                    "type":"string",
+                    "xml":{
+                        "name":"provider_path"
+                    }
+                },
+                "version":{
+                    "type":"string"
+                },
+                "sessionId":{
+                    "type":"string"
+                },
+                "sessionStart":{
+                    "type":"string",
+                    "format":"date-time",
+                    "xml":{
+                        "name":"sessionstart"
+                    }
+                },
+                "getlastPinged":{
+                    "type":"string",
+                    "format":"date-time",
+                    "xml":{
+                        "name":"lastpinged"
+                    }
+                },
+                "guid":{
+                    "type":"string"
+                },
+                "external":{
+                    "type":"boolean",
+                    "description":"This indicates whether step is external or internal",
+                    "default":false
+                }
+            },
+            "xml":{
+                "name":"Provider"
+            }
+        },
+        "FlowTemplateMap":{
+            "type":"object",
+            "properties":{
+                "id":{
+                    "type":"integer",
+                    "format":"int64",
+                    "description":"The unique ID of the flow template map generated by the system."
+                },
+                "type":{
+                    "type":"string",
+                    "description":"The type of fieldmap template associated with a flow template map.",
+                    "enum":[
+                        "BOTH",
+                        "CREATE",
+                        "UPDATE"
+                    ]
+                },
+                "fieldMapTemplate":{
+                    "description":"FIELDMAPTEMPLATE",
+                    "$ref":"#/definitions/FieldMapTemplate"
+                }
+            },
+            "description":"FLOWTEMPLATEMAP",
+            "xml":{
+                "name":"FlowTemplateMap"
+            }
+        },
+        "FlowDefinitionApp":{
+            "type":"object",
+            "properties":{
+                "children":{
+                    "type":"array",
+                    "description":"A list of flow definition applications.",
+                    "items":{
+                        "$ref":"#/definitions/FlowDefinitionApp"
+                    }
+                },
+                "id":{
+                    "type":"integer",
+                    "format":"int64",
+                    "description":"The unique ID of the flow definition application generated by the system."
+                },
+                "app":{
+                    "description":"A reference to the App business object.",
+                    "$ref":"#/definitions/App"
+                },
+                "flowDefinition":{
+                    "description":"The flow definition object associated with a flow.",
+                    "$ref":"#/definitions/FlowDefinition"
+                },
+                "disableCompare":{
+                    "type":"boolean",
+                    "description":"The indicator that determines whether the Compare step is enabled or disabled for a flow.",
+                    "default":false
+                }
+            },
+            "description":"A reference to the flowDefApp business object.",
+            "xml":{
+                "name":"FlowDefinitionApp"
+            }
+        },
+        "FieldMapTemplate":{
+            "type":"object",
+            "properties":{
+                "name":{
+                    "type":"string",
+                    "description":"The name of the fieldmap template."
+                },
+                "id":{
+                    "type":"integer",
+                    "format":"int64",
+                    "description":"The unique ID of the fieldmap template generated by the system. "
+                },
+                "type":{
+                    "type":"string",
+                    "description":"The type of fieldmap template that can be created. Choices include: Direct, Java, or Groovy.",
+                    "enum":[
+                        "Direct",
+                        "Java",
+                        "Groovy"
+                    ]
+                },
+                "description":{
+                    "type":"string",
+                    "description":"A description of the fieldmap template."
+                }
+            },
+            "description":"A reference to the fieldMapTemplate business object.",
+            "xml":{
+                "name":"FieldMapTemplate"
+            }
+        },
+        "Providers":{
+            "type":"object"
+        },
+        "FlowStepInstanceMessage":{
+            "type":"object",
+            "properties":{
+                "name":{
+                    "type":"string",
+                    "description":"The name of the flowstep instance message."
+                },
+                "id":{
+                    "type":"integer",
+                    "format":"int64",
+                    "description":"The unique ID of the flowstep instance message generated by the system."
+                },
+                "seqNo":{
+                    "type":"integer",
+                    "format":"int32",
+                    "description":"The sequence number of a flowstep instance message. The sequence number determines the display order of the flowstep instance message in a sequence."
+                },
+                "stringData":{
+                    "type":"string",
+                    "description":"The input and output messages of each step in a flow."
+                }
+            },
+            "description":"A reference to the flowStepInstMsg business object.",
+            "xml":{
+                "name":"FlowStepInstanceMessage"
+            }
+        },
+        "BusinessObject":{
+            "type":"object",
+            "properties":{
+                "name":{
+                    "type":"string",
+                    "description":"The name of the flow business object."
+                },
+                "id":{
+                    "type":"integer",
+                    "format":"int64",
+                    "description":"The unique ID of the business object generated by the system."
+                },
+                "description":{
+                    "type":"string",
+                    "description":"A description of the business object."
+                }
+            },
+            "description":"A reference to a business object.",
+            "xml":{
+                "name":"BusinessObject"
+            }
+        },
+        "EventProviderInstanceConfigs":{
+            "type":"object",
+            "properties":{
+                "id":{
+                    "type":"integer",
+                    "format":"int64",
+                    "description":"The unique ID of the EventProviderInstanceConfig generated by the system."
+                },
+                "description":{
+                    "type":"string",
+                    "description":"A description of the event provider instance configuration."
+                },
+                "eventListenerConfigList":{
+                    "type":"array",
+                    "xml":{
+                        "name":"EventListenerConfigList"
+                    },
+                    "description":"A reference to the EventListenerConfig business object.",
+                    "items":{
+                        "$ref":"#/definitions/EventListenerConfigs"
+                    }
+                },
+                "eventProviderConfig":{
+                    "xml":{
+                        "name":"EventProviderConfig"
+                    },
+                    "description":"A reference to the EventProviderConfig business object.",
+                    "$ref":"#/definitions/EventProviderConfigs"
+                }
+            },
+            "description":"EVENTPROVIDERINSTANCECONFIGS",
+            "xml":{
+                "name":"EventProviderInstanceConfigs"
+            }
+        },
+        "FlowLoadObject":{
+            "type":"object",
+            "properties":{
+                "id":{
+                    "type":"integer",
+                    "format":"int64",
+                    "description":"The unique ID of the flow load object generated by the system."
+                },
+                "flowBusinessObject":{
+                    "description":"A reference to a flow business object.",
+                    "$ref":"#/definitions/FlowBusinessObject"
+                }
+            },
+            "description":"A reference to the flowLoadObject business object.",
+            "xml":{
+                "name":"FlowLoadObject"
+            }
+        },
+        "MultiPart":{
+            "type":"object",
+            "properties":{
+                "contentDisposition":{
+                    "$ref":"#/definitions/ContentDisposition"
+                },
+                "entity":{
+                    "type":"object"
+                },
+                "headers":{
+                    "type":"object",
+                    "additionalProperties":{
+                        "type":"array",
+                        "items":{
+                            "type":"string"
+                        }
+                    }
+                },
+                "mediaType":{
+                    "$ref":"#/definitions/MediaType"
+                },
+                "messageBodyWorkers":{
+                    "$ref":"#/definitions/MessageBodyWorkers"
+                },
+                "parent":{
+                    "$ref":"#/definitions/MultiPart"
+                },
+                "providers":{
+                    "$ref":"#/definitions/Providers"
+                },
+                "bodyParts":{
+                    "type":"array",
+                    "items":{
+                        "$ref":"#/definitions/BodyPart"
+                    }
+                },
+                "parameterizedHeaders":{
+                    "type":"object",
+                    "additionalProperties":{
+                        "type":"array",
+                        "items":{
+                            "$ref":"#/definitions/ParameterizedHeader"
+                        }
+                    }
+                }
+            }
+        },
+        "EventProviderConfigs":{
+            "type":"object",
+            "properties":{
+                "name":{
+                    "type":"string",
+                    "description":"The name of the event provider configuration."
+                },
+                "version":{
+                    "type":"string",
+                    "description":"The version number of the event provider configuration."
+                },
+                "configValueMap":{
+                    "type":"object",
+                    "xml":{
+                        "name":"ConfigValueMap"
+                    },
+                    "description":"The configuration value mappings associated with the event provider configuration.",
+                    "additionalProperties":{
+                        "type":"string"
+                    }
+                }
+            },
+            "description":"EVENTPROVIDERCONFIGS",
+            "xml":{
+                "name":"EventProviderConfigs"
+            }
+        },
+        "MediaType":{
+            "type":"object",
+            "properties":{
+                "type":{
+                    "type":"string"
+                },
+                "subtype":{
+                    "type":"string"
+                },
+                "parameters":{
+                    "type":"object",
+                    "additionalProperties":{
+                        "type":"string"
+                    }
+                },
+                "wildcardType":{
+                    "type":"boolean",
+                    "default":false
+                },
+                "wildcardSubtype":{
+                    "type":"boolean",
+                    "default":false
+                }
+            }
+        },
+        "EventInstanceConfig":{
+            "type":"object",
+            "properties":{
+                "value":{
+                    "type":"string",
+                    "description":"The value of the event instance configuration."
+                },
+                "id":{
+                    "type":"integer",
+                    "format":"int64",
+                    "description":"The ID of the eventInstConfig object generated by the system."
+                },
+                "eventListenerInstance":{
+                    "description":"EVENTLISTENERINST",
+                    "$ref":"#/definitions/EventListenerInstance"
+                },
+                "eventConfig":{
+                    "description":"A reference to the eventConfig object.",
+                    "$ref":"#/definitions/EventConfig"
+                }
+            },
+            "description":"The value of the event instance configuration.",
+            "xml":{
+                "name":"InstanceConfig"
+            }
+        },
+        "EventListener":{
+            "type":"object",
+            "properties":{
+                "name":{
+                    "type":"string",
+                    "description":"The name of the event listener."
+                },
+                "id":{
+                    "type":"integer",
+                    "format":"int64",
+                    "description":"The unique ID of the event listener generated by the system."
+                },
+                "type":{
+                    "type":"string",
+                    "description":"The type of event listener."
+                },
+                "description":{
+                    "type":"string",
+                    "description":"A description of the event listener."
+                },
+                "flowSchedule":{
+                    "description":"The flow schedule object associated with a flow instance.",
+                    "$ref":"#/definitions/FlowSchedule"
+                }
+            },
+            "description":"A reference to the event listener object.",
+            "xml":{
+                "name":"EventListener"
+            }
+        },
+        "ExternalStepRequest":{
+            "type":"object",
+            "properties":{
+                "id":{
+                    "type":"integer",
+                    "format":"int64",
+                    "description":"The unique ID of the external step request generated by the system."
+                },
+                "provider":{
+                    "description":"The Provider object associated with an external step request",
+                    "$ref":"#/definitions/ProviderRO"
+                },
+                "status":{
+                    "type":"string",
+                    "description":"The status of external flow step."
+                },
+                "flowStepInstance":{
+                    "description":"The flowStepInstance object associated with an external step request",
+                    "$ref":"#/definitions/FlowStepInstance"
+                },
+                "flowInstance":{
+                    "description":"The flowInstance object associated with an external step request",
+                    "$ref":"#/definitions/FlowInstance"
+                },
+                "reqData":{
+                    "type":"array",
+                    "description":"The request data of external flow step.",
+                    "items":{
+                        "type":"string",
+                        "format":"byte"
+                    }
+                },
+                "respData":{
+                    "type":"array",
+                    "description":"The response data of external flow step.",
+                    "items":{
+                        "type":"string",
+                        "format":"byte"
+                    }
+                },
+                "reqPara":{
+                    "type":"array",
+                    "xml":{
+                        "name":"reqData"
+                    },
+                    "description":"The request parameters of external flow step.",
+                    "items":{
+                        "type":"string",
+                        "format":"byte"
+                    }
+                },
+                "errMsg":{
+                    "type":"string",
+                    "description":"The error message of external flow step."
+                },
+                "externalRequestType":{
+                    "type":"string",
+                    "description":"External Request Type.",
+                    "enum":[
+                        "CUSTOM_STEP",
+                        "LOAD_STEP",
+                        "SAVE_STEP",
+                        "VALIDATE_DEPLOYMENT",
+                        "GET_CHILD_FLOWS",
+                        "GET_PROJECT_KEY"
+                    ]
+                },
+                "customization":{
+                    "description":"The Customization object associated with an external step request",
+                    "$ref":"#/definitions/CustomizationRO"
+                }
+            },
+            "description":"A reference to store the request for an external step to run.",
+            "xml":{
+                "name":"ExternalStepRequest"
+            }
+        },
+        "FlowDefinition":{
+            "type":"object",
+            "properties":{
+                "name":{
+                    "type":"string",
+                    "description":"The name of the flow definition."
+                },
+                "priority":{
+                    "type":"integer",
+                    "format":"int32",
+                    "description":"The priority of the flow definition. This value determines the order for displaying the flow definition in the Gateway user interface."
+                },
+                "id":{
+                    "type":"integer",
+                    "format":"int64",
+                    "description":"The unique ID of the flow definition generated by the system."
+                },
+                "type":{
+                    "type":"string",
+                    "description":"A description of the flow definition type."
+                },
+                "description":{
+                    "type":"string",
+                    "description":"A description of the flow definition."
+                },
+                "hasCompareStep":{
+                    "type":"boolean",
+                    "description":"An indicator which determines whether the Compare step exists in a flow definition.",
+                    "default":false
+                },
+                "isEnabled":{
+                    "type":"boolean",
+                    "description":"An indicator which determines whether the flow definition is enabled.",
+                    "default":false
+                }
+            },
+            "description":"The flow definition object associated with a flow.",
+            "xml":{
+                "name":"FlowDefinition"
+            }
+        },
+        "Settings":{
+            "type":"object",
+            "properties":{
+                "parameterValues":{
+                    "type":"array",
+                    "description":"The parameter values specified in Gateway settings.",
+                    "uniqueItems":true,
+                    "items":{
+                        "$ref":"#/definitions/ParameterValue"
+                    }
+                }
+            },
+            "description":"A reference to the Settings object.",
+            "xml":{
+                "name":"Settings"
+            }
+        },
+        "MessageBodyWorkers":{
+            "type":"object"
+        },
+        "AppConfig":{
+            "type":"object",
+            "properties":{
+                "name":{
+                    "type":"string",
+                    "description":"The name of the application  configuration."
+                },
+                "id":{
+                    "type":"integer",
+                    "format":"int64",
+                    "description":"The unique ID of the application instance configuration generated by the system."
+                },
+                "type":{
+                    "type":"string",
+                    "description":"The category of application configuration.",
+                    "enum":[
+                        "STRING",
+                        "INTEGER",
+                        "LONG",
+                        "DATE",
+                        "BOOLEAN",
+                        "PASSWORD",
+                        "FILE",
+                        "READONLY",
+                        "ENUM"
+                    ]
+                },
+                "required":{
+                    "type":"boolean",
+                    "default":false
+                }
+            },
+            "description":"The application configuration associated with the application instance configuration.",
+            "xml":{
+                "name":"AppConfig"
+            }
+        },
+        "AppInstance":{
+            "type":"object",
+            "properties":{
+                "name":{
+                    "type":"string",
+                    "description":"The name of the application instance associated with the application instance ID."
+                },
+                "id":{
+                    "type":"integer",
+                    "format":"int64",
+                    "description":"The unique ID of the application instance generated by the system."
+                },
+                "description":{
+                    "type":"string",
+                    "description":"A description of the application instance."
+                },
+                "app":{
+                    "description":"A reference to the App business object.",
+                    "$ref":"#/definitions/App"
+                }
+            },
+            "description":"The list of application instances associated with a flow.",
+            "xml":{
+                "name":"AppInstance"
+            }
+        },
+        "FlowInstance":{
+            "type":"object",
+            "properties":{
+                "id":{
+                    "type":"integer",
+                    "format":"int64",
+                    "description":"The unique ID of the flow instance generated by the system."
+                },
+                "hostName":{
+                    "type":"string",
+                    "description":"The host name associated with a flow instance."
+                },
+                "status":{
+                    "type":"string",
+                    "description":"The status of the flow instance. Choices include: New, Queued, Running, Delegated, On Hold, Rejected, Completed, Completed with Errors, Failed, Noop, and Completed with Warnings.",
+                    "enum":[
+                        "New",
+                        "Queued",
+                        "Running",
+                        "Delegated",
+                        "On Hold",
+                        "Rejected",
+                        "Completed",
+                        "Completed with Errors",
+                        "Failed",
+                        "Noop",
+                        "Completed with Warnings"
+                    ]
+                },
+                "endTime":{
+                    "type":"string",
+                    "format":"date-time",
+                    "description":"The end time when a flow instance was completed."
+                },
+                "startTime":{
+                    "type":"string",
+                    "format":"date-time",
+                    "description":"The start time of the flow instance."
+                },
+                "flow":{
+                    "description":"The flow object associated with a flow instance.",
+                    "$ref":"#/definitions/Flow"
+                },
+                "flowSchedule":{
+                    "description":"The flow schedule object associated with a flow instance.",
+                    "$ref":"#/definitions/FlowSchedule"
+                },
+                "parentFlowInstanceId":{
+                    "type":"integer",
+                    "format":"int64",
+                    "description":"The unique ID of the parent flow instance associated with the child flow instance."
+                },
+                "externalStepStatus":{
+                    "type":"string",
+                    "description":"Custom external step status"
+                },
+                "flowStepInstances":{
+                    "type":"array",
+                    "description":"Set of flow step instances ",
+                    "uniqueItems":true,
+                    "items":{
+                        "$ref":"#/definitions/FlowStepInstance"
+                    }
+                },
+                "childInstances":{
+                    "type":"array",
+                    "description":"A list of child flow instances associated with a flow instance object.",
+                    "items":{
+                        "type":"integer",
+                        "format":"int64"
+                    }
+                },
+                "errorDataDesc":{
+                    "type":"string",
+                    "description":"A description of the error data associated with the flow instance."
+                },
+                "flowDefName":{
+                    "type":"string",
+                    "description":"The name of the flow definition."
+                }
+            },
+            "description":"A reference to the flowInst business object.",
+            "xml":{
+                "name":"FlowInstance"
+            }
+        },
+        "ParameterValue":{
+            "type":"object",
+            "properties":{
+                "value":{
+                    "type":"string",
+                    "description":"The value of the parameter."
+                },
+                "id":{
+                    "type":"integer",
+                    "format":"int64",
+                    "description":"The unique ID of the parameter value generated by the system."
+                },
+                "parameter":{
+                    "description":"A reference  to the parameter business object.",
+                    "$ref":"#/definitions/Parameter"
+                }
+            },
+            "description":"The list of parameter values associated with a flow schedule.",
+            "xml":{
+                "name":"ParameterValue"
+            }
+        },
+        "EventConfig":{
+            "type":"object",
+            "properties":{
+                "name":{
+                    "type":"string",
+                    "description":"The name of the event configuration."
+                },
+                "id":{
+                    "type":"integer",
+                    "format":"int64",
+                    "description":"The unique ID of the event configuration generated by the system."
+                },
+                "type":{
+                    "type":"string",
+                    "description":"The type of event configuration. Choices include: String, Integer, Double, Boolen, HiddenString, and Criteria.",
+                    "enum":[
+                        "String",
+                        "Integer",
+                        "Double",
+                        "Boolean",
+                        "HiddenString",
+                        "Criteria"
+                    ]
+                },
+                "title":{
+                    "type":"string",
+                    "description":"The title of the event configuration."
+                }
+            },
+            "description":"A reference to the eventConfig object.",
+            "xml":{
+                "name":"EventProviderConfig"
+            }
+        },
+        "FlowStep":{
+            "type":"object",
+            "properties":{
+                "name":{
+                    "type":"string",
+                    "description":"The name of the flow definition."
+                },
+                "id":{
+                    "type":"integer",
+                    "format":"int64",
+                    "description":"The unique ID of the flow step generated by the system."
+                },
+                "type":{
+                    "type":"string",
+                    "description":"The category of the flow step.",
+                    "enum":[
+                        "LOAD",
+                        "SAVE",
+                        "CONVERT_TO_PDI",
+                        "CONVERT_FROM_PDI",
+                        "COMPARE",
+                        "CUSTOM",
+                        "REVIEW"
+                    ]
+                },
+                "description":{
+                    "type":"string",
+                    "description":"A description of the flow step."
+                }
+            },
+            "description":"A reference to the flowStep business object.",
+            "xml":{
+                "name":"FlowStep"
+            }
+        },
+        "ObjectLogDetailsRO":{
+            "type":"object",
+            "properties":{
+                "message":{
+                    "type":"string"
+                },
+                "status":{
+                    "type":"string"
+                },
+                "entityName":{
+                    "type":"string"
+                },
+                "srcObjId":{
+                    "type":"integer",
+                    "format":"int64"
+                },
+                "destKey":{
+                    "type":"string"
+                },
+                "destTempKey":{
+                    "type":"string"
+                },
+                "flowInstId":{
+                    "type":"integer",
+                    "format":"int64"
+                },
+                "action":{
+                    "type":"string"
+                },
+                "executed":{
+                    "type":"string"
+                },
+                "objectData":{
+                    "type":"string"
+                },
+                "destBusObject":{
+                    "type":"object",
+                    "additionalProperties":{
+                        "type":"object"
+                    }
+                },
+                "pdiKey":{
+                    "type":"string"
+                },
+                "sourceKey":{
+                    "type":"string"
+                }
+            },
+            "xml":{
+                "name":"ObjectLogDetails"
+            }
+        },
+        "AppInstanceConfig":{
+            "type":"object",
+            "properties":{
+                "value":{
+                    "type":"string",
+                    "description":"The value of the application instance configuration entered by the user."
+                },
+                "id":{
+                    "type":"integer",
+                    "format":"int64",
+                    "description":"The unique ID of the application instance configuration generated by the system."
+                },
+                "appInstance":{
+                    "description":"The list of application instances associated with a flow.",
+                    "$ref":"#/definitions/AppInstance"
+                },
+                "appConfig":{
+                    "description":"The application configuration associated with the application instance configuration.",
+                    "$ref":"#/definitions/AppConfig"
+                }
+            },
+            "description":"A list of application instance configurations associated with the application instance.",
+            "xml":{
+                "name":"AppInstanceConfig"
+            }
+        },
+        "CustomizationRO":{
+            "type":"object",
+            "required":[
+                "classPath",
+                "id",
+                "name",
+                "version"
+            ],
+            "properties":{
+                "name":{
+                    "type":"string"
+                },
+                "id":{
+                    "type":"integer",
+                    "format":"int64"
+                },
+                "classPath":{
+                    "type":"string"
+                },
+                "version":{
+                    "type":"string"
+                },
+                "sessionId":{
+                    "type":"string"
+                },
+                "sessionStart":{
+                    "type":"string",
+                    "format":"date-time",
+                    "xml":{
+                        "name":"sessionstart"
+                    }
+                },
+                "getlastPinged":{
+                    "type":"string",
+                    "format":"date-time",
+                    "xml":{
+                        "name":"lastpinged"
+                    }
+                },
+                "guid":{
+                    "type":"string"
+                },
+                "external":{
+                    "type":"boolean",
+                    "description":"This indicates whether step is external or internal",
+                    "default":false
+                }
+            },
+            "xml":{
+                "name":"Customization"
+            }
+        },
+        "Flow":{
+            "type":"object",
+            "properties":{
+                "name":{
+                    "type":"string",
+                    "description":"The name of the flow."
+                },
+                "id":{
+                    "type":"integer",
+                    "format":"int64",
+                    "description":"The unique ID of the flow generated by the system."
+                },
+                "description":{
+                    "type":"string",
+                    "description":"A description of the flow."
+                },
+                "flowDefinition":{
+                    "description":"The flow definition object associated with a flow.",
+                    "$ref":"#/definitions/FlowDefinition"
+                },
+                "disableCompare":{
+                    "type":"boolean",
+                    "description":"The indicator that determines whether the Compare step is enabled or disabled for a flow.",
+                    "default":false
+                },
+                "destinationApp":{
+                    "description":"A reference to the App business object.",
+                    "$ref":"#/definitions/App"
+                },
+                "enableFeedback":{
+                    "type":"boolean",
+                    "description":"The indicator which determines whether the feedback step is enabled in a business flow.",
+                    "default":false
+                },
+                "sourceApp":{
+                    "description":"A reference to the App business object.",
+                    "$ref":"#/definitions/App"
+                },
+                "flowType":{
+                    "type":"string",
+                    "description":"Flow Type"
+                },
+                "configSteps":{
+                    "type":"boolean",
+                    "description":"The indicator determines whether to configure steps",
+                    "default":false
+                }
+            },
+            "description":"The flow object associated with a flow instance.",
+            "xml":{
+                "name":"Flow"
+            }
+        },
+        "FlowBusinessObject":{
+            "type":"object",
+            "properties":{
+                "id":{
+                    "type":"integer",
+                    "format":"int64",
+                    "description":"The unique ID of the flow business object generated by the system."
+                },
+                "flowDefinition":{
+                    "type":"string"
+                },
+                "businessObject":{
+                    "description":"A reference to a business object.",
+                    "$ref":"#/definitions/BusinessObject"
+                },
+                "flowType":{
+                    "type":"string"
+                }
+            },
+            "description":"A reference to a flow business object.",
+            "xml":{
+                "name":"FlowBusinessObject"
+            }
+        },
+        "FlowSchedule":{
+            "type":"object",
+            "properties":{
+                "name":{
+                    "type":"string",
+                    "description":"The name of the flow schedule."
+                },
+                "id":{
+                    "type":"integer",
+                    "format":"int64",
+                    "description":"The unique ID of the flow schedule generated by the system."
+                },
+                "description":{
+                    "type":"string",
+                    "description":"A description of the flow schedule."
+                },
+                "status":{
+                    "type":"string",
+                    "description":"The status of the flow schedule.",
+                    "enum":[
+                        "NEW",
+                        "QUEUED",
+                        "RUNNING",
+                        "DELEGATED",
+                        "ON_HOLD",
+                        "REJECTED",
+                        "COMPLETED",
+                        "COMPLETED_WITH_ERRORS",
+                        "FAILED",
+                        "NOOP",
+                        "COMPLETED_WITH_WARNINGS"
+                    ]
+                },
+                "schedule":{
+                    "description":"The schedule object associated with a flow schedule. This is used for scheduling jobs.",
+                    "$ref":"#/definitions/Schedule"
+                },
+                "flow":{
+                    "description":"The flow object associated with a flow instance.",
+                    "$ref":"#/definitions/Flow"
+                },
+                "externalStepStatus":{
+                    "type":"string",
+                    "description":"Custom external step status"
+                },
+                "predecessorFlowScheduleId":{
+                    "type":"integer",
+                    "format":"int64",
+                    "description":"The predecessor ID of the flow schedule"
+                },
+                "predecessorFlowScheduleName":{
+                    "type":"string",
+                    "description":"The predecessor Name of the flow schedule"
+                },
+                "lastCompletionDate":{
+                    "type":"string",
+                    "format":"date-time",
+                    "description":"The last completion date of the flow schedule."
+                },
+                "sourceAppInstance":{
+                    "description":"The list of application instances associated with a flow.",
+                    "$ref":"#/definitions/AppInstance"
+                },
+                "eventListenerInstance":{
+                    "description":"The event listener associated with the flow schedule.",
+                    "$ref":"#/definitions/EventListenerInstance"
+                },
+                "previousFlowScheduleId":{
+                    "type":"integer",
+                    "format":"int64",
+                    "description":"Previous FlowSchedule Id"
+                },
+                "lastJobRunStatus":{
+                    "type":"string",
+                    "description":"The status of the last job run associated with the flow schedule. Values include: New, Queued, Running, Delegated, On Hold, Rejected, Completed, Completed with Errors, Failed, Noop, or Completed with Warnings.",
+                    "enum":[
+                        "New",
+                        "Queued",
+                        "Running",
+                        "Delegated",
+                        "On Hold",
+                        "Rejected",
+                        "Completed",
+                        "Completed with Errors",
+                        "Failed",
+                        "Noop",
+                        "Completed with Warnings"
+                    ]
+                },
+                "destinationAppInstance":{
+                    "description":"The list of application instances associated with a flow.",
+                    "$ref":"#/definitions/AppInstance"
+                },
+                "flowDefName":{
+                    "type":"string",
+                    "description":"The name of the flow definition."
+                },
+                "recurring":{
+                    "type":"boolean",
+                    "description":"The indicator that determines whether a flow schedule recurs. ",
+                    "default":false
+                },
+                "active":{
+                    "type":"boolean",
+                    "description":"An indicator which determines whether the flow schedule is active.",
+                    "default":false
+                },
+                "nextRunDate":{
+                    "type":"string",
+                    "format":"date-time",
+                    "description":"The next run date associated with a flow schedule."
+                },
+                "isParent":{
+                    "type":"boolean",
+                    "description":"The indicator that determines whether a flow schedule is a parent object.",
+                    "default":false
+                },
+                "maxRuns":{
+                    "type":"integer",
+                    "format":"int32",
+                    "description":"The maximum number of runs allowed for a flow schedule."
+                },
+                "flowInstRuns":{
+                    "type":"integer",
+                    "format":"int32",
+                    "description":"The number of flow instance runs associated with a flow schedule."
+                },
+                "lastRunJobId":{
+                    "type":"integer",
+                    "format":"int64",
+                    "description":"The unique ID of the last job run in the flow schedule generated by the system."
+                },
+                "lastStartDate":{
+                    "type":"string",
+                    "format":"date-time",
+                    "description":"The last start date associated with the flow schedule."
+                },
+                "noEndDate":{
+                    "type":"boolean",
+                    "description":"An indicator which determines whether the flow schedule has no end date specified.",
+                    "default":false
+                }
+            },
+            "description":"The flow schedule object associated with a flow instance.",
+            "xml":{
+                "name":"FlowSchedule"
+            }
+        },
+        "ContentDisposition":{
+            "type":"object",
+            "properties":{
+                "type":{
+                    "type":"string"
+                },
+                "parameters":{
+                    "type":"object",
+                    "additionalProperties":{
+                        "type":"string"
+                    }
+                },
+                "fileName":{
+                    "type":"string"
+                },
+                "creationDate":{
+                    "type":"string",
+                    "format":"date-time"
+                },
+                "modificationDate":{
+                    "type":"string",
+                    "format":"date-time"
+                },
+                "readDate":{
+                    "type":"string",
+                    "format":"date-time"
+                },
+                "size":{
+                    "type":"integer",
+                    "format":"int64"
+                }
+            }
+        },
+        "FlowStepInstance":{
+            "type":"object",
+            "properties":{
+                "id":{
+                    "type":"integer",
+                    "format":"int64",
+                    "description":"The unique ID of the flowstep instance generated by the system."
+                },
+                "status":{
+                    "type":"string",
+                    "description":"The job status associated with the flowstep instance.",
+                    "enum":[
+                        "NEW",
+                        "QUEUED",
+                        "RUNNING",
+                        "DELEGATED",
+                        "ON_HOLD",
+                        "REJECTED",
+                        "COMPLETED",
+                        "COMPLETED_WITH_ERRORS",
+                        "FAILED",
+                        "NOOP",
+                        "COMPLETED_WITH_WARNINGS"
+                    ]
+                },
+                "endTime":{
+                    "type":"string",
+                    "format":"date-time",
+                    "description":"The end time of the flow step instance."
+                },
+                "startTime":{
+                    "type":"string",
+                    "format":"date-time",
+                    "description":"The start time of the flow step instance."
+                },
+                "flowInstance":{
+                    "description":"A reference to the flowInst business object.",
+                    "$ref":"#/definitions/FlowInstance"
+                },
+                "externalStepStatus":{
+                    "type":"string",
+                    "description":"Custom external step status"
+                },
+                "flowStepInstanceMessages":{
+                    "type":"array",
+                    "description":"A reference to the flowStepInstMsg business object.",
+                    "uniqueItems":true,
+                    "items":{
+                        "$ref":"#/definitions/FlowStepInstanceMessage"
+                    }
+                },
+                "warningDataDesc":{
+                    "type":"string",
+                    "description":"A description of the error data associated with the warning data."
+                },
+                "warningData":{
+                    "type":"string",
+                    "xml":{
+                        "name":"WarningData"
+                    },
+                    "description":"Depending on the flow, indicates that data is missing or that there is extra data. The synchronization will run and finish.  The user should investigate the messages and fix any problems that are found."
+                },
+                "flowStep":{
+                    "description":"A reference to the flowStep business object.",
+                    "$ref":"#/definitions/FlowStep"
+                },
+                "errorData":{
+                    "type":"string",
+                    "description":"An exception occured. The synchronization has failed."
+                },
+                "errorDataDesc":{
+                    "type":"string",
+                    "description":"A description of the error data object associated with a flow step instance."
+                },
+                "flowType":{
+                    "type":"string",
+                    "description":"Flow Type"
+                }
+            },
+            "description":"A reference to the flowStepInst business object.",
+            "xml":{
+                "name":"FlowStepInstance"
+            }
+        },
+        "Schedule":{
+            "type":"object",
+            "properties":{
+                "predecessorFlowScheduleId":{
+                    "type":"integer",
+                    "format":"int64",
+                    "description":"The predecessor ID of the schedule"
+                },
+                "scheduleExpression":{
+                    "type":"string",
+                    "description":"The job schedule in CRON format."
+                },
+                "scheduleId":{
+                    "type":"integer",
+                    "format":"int64",
+                    "description":"The unique ID of the schedule generated by the system."
+                },
+                "startDate":{
+                    "type":"string",
+                    "format":"date-time",
+                    "description":"The start date of a schedule."
+                },
+                "endDate":{
+                    "type":"string",
+                    "format":"date-time",
+                    "description":"The end date of a schedule."
+                },
+                "scheduleName":{
+                    "type":"string",
+                    "description":"The name of the schedule."
+                }
+            },
+            "description":"The schedule object associated with a flow schedule. This is used for scheduling jobs.",
+            "xml":{
+                "name":"Schedule"
+            }
+        },
+        "FlowParameter":{
+            "type":"object",
+            "properties":{
+                "readOnly":{
+                    "type":"boolean",
+                    "description":"An indicator which determines whether the flow parameter is a read-only object.",
+                    "default":false
+                },
+                "id":{
+                    "type":"integer",
+                    "format":"int64",
+                    "description":"The unique ID of the flow parameter generated by the system."
+                },
+                "defaultValue":{
+                    "type":"string",
+                    "description":"The default value of the parameter."
+                },
+                "required":{
+                    "type":"boolean",
+                    "description":"The parameter that must be present when a flow is run.",
+                    "default":false
+                },
+                "parameter":{
+                    "description":"A reference  to the parameter business object.",
+                    "$ref":"#/definitions/Parameter"
+                },
+                "hidden":{
+                    "type":"boolean",
+                    "description":"An indicator which determines whether the flow parameter is a hidden object.",
+                    "default":false
+                }
+            },
+            "description":"A list of flow parameter objects associated with a flow.",
+            "xml":{
+                "name":"FlowParameter"
+            }
+        },
+        "EventListenerConfigs":{
+            "type":"object",
+            "properties":{
+                "name":{
+                    "type":"string",
+                    "description":"The name of the event listener configuration."
+                },
+                "businessFlowName":{
+                    "type":"string",
+                    "description":"The business flow name associated with the event listener configuration."
+                },
+                "synchronizationName":{
+                    "type":"string",
+                    "description":"The synchronization name associated with an event listener configuration."
+                },
+                "getconfigValueMap":{
+                    "type":"object",
+                    "xml":{
+                        "name":"configValueMap"
+                    },
+                    "description":"The configuration value mappings associated with the event listener configuration.",
+                    "additionalProperties":{
+                        "type":"string"
+                    }
+                }
+            },
+            "description":"A reference to the EventListenerConfig business object.",
+            "xml":{
+                "name":"EventListenerConfigs"
+            }
+        },
+        "Event":{
+            "type":"object",
+            "properties":{
+                "name":{
+                    "type":"string",
+                    "description":"The name of the event."
+                },
+                "type":{
+                    "type":"string",
+                    "description":"The type of event."
+                },
+                "valueMap":{
+                    "type":"object",
+                    "description":"The criteria that needs to be satisfied for an event to be executed.",
+                    "additionalProperties":{
+                        "type":"string"
+                    }
+                }
+            },
+            "description":"A reference to the Event business object."
+        },
+        "Parameter":{
+            "type":"object",
+            "properties":{
+                "name":{
+                    "type":"string",
+                    "description":"The name of the parameter."
+                },
+                "id":{
+                    "type":"integer",
+                    "format":"int64",
+                    "description":"The unique ID of the parameter generated by the system."
+                },
+                "type":{
+                    "type":"string",
+                    "description":"The data type of the parameter. Values include: String, Int, Double, DateTime, Boolean, Enum, Password, Filter, Custom, HiddenString, or Group.",
+                    "enum":[
+                        "STRING",
+                        "INT",
+                        "DOUBLE",
+                        "DATETIME",
+                        "BOOLEAN",
+                        "ENUM",
+                        "PASSWORD",
+                        "FILTER",
+                        "CUSTOM",
+                        "HIDDENSTRING",
+                        "GROUP",
+                        "FILE"
+                    ]
+                },
+                "defaultValue":{
+                    "type":"string",
+                    "description":"The default value of the parameter."
+                },
+                "description":{
+                    "type":"string",
+                    "description":"A description of the parameter."
+                },
+                "title":{
+                    "type":"string",
+                    "description":"The title of the parameter."
+                },
+                "customerDefined":{
+                    "type":"boolean",
+                    "description":"An indicator which determines whether a parameter is defined by the customer.",
+                    "default":false
+                },
+                "seqNo":{
+                    "type":"integer",
+                    "format":"int32",
+                    "description":"The sequence number of a parameter. The sequence number determines the display order of the parameter in a sequence."
+                },
+                "enumOptions":{
+                    "type":"string",
+                    "description":"The enumeration options associated with a parameter."
+                },
+                "appTitle":{
+                    "type":"string",
+                    "description":"The application title associated with the parameter."
+                },
+                "side":{
+                    "type":"string",
+                    "description":"The side of a data flow that a parameter is associated with. Values include: Source, Desctination, or PDI.",
+                    "enum":[
+                        "SOURCE",
+                        "DESTINATION",
+                        "PDI"
+                    ]
+                },
+                "group":{
+                    "type":"string",
+                    "description":"The parameter group associated with the parameter."
+                }
+            },
+            "description":"PARAM",
+            "xml":{
+                "name":"Parameter"
+            }
+        },
+        "EventListenerInstance":{
+            "type":"object",
+            "properties":{
+                "id":{
+                    "type":"integer",
+                    "format":"int64",
+                    "description":"The unique ID of the event listener instance generated by the system."
+                },
+                "eventInstanceConfigs":{
+                    "type":"array",
+                    "description":"A reference to the eventInstConfig object.",
+                    "uniqueItems":true,
+                    "items":{
+                        "$ref":"#/definitions/EventInstanceConfig"
+                    }
+                },
+                "flowSchedule":{
+                    "description":"The flow schedule object associated with a flow instance.",
+                    "$ref":"#/definitions/FlowSchedule"
+                },
+                "delayInMinutes":{
+                    "type":"integer",
+                    "format":"int32",
+                    "description":"The delay in minutes before triggering a event-based synchronization job."
+                },
+                "eventDisabled":{
+                    "type":"boolean",
+                    "description":"The indicator which determines whether the event is disabled or eneabled.",
+                    "default":false
+                },
+                "eventListener":{
+                    "description":"A reference to the event listener object.",
+                    "$ref":"#/definitions/EventListener"
+                }
+            },
+            "description":"A reference to the event listener instance object.",
+            "xml":{
+                "name":"EventProviderInstance"
+            }
+        }
+    }
+}
